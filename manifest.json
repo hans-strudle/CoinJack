@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+
+  "name": "CoinJack",
+  "description": "HiJack browser miners",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "res/CoinJack.png",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": ["extension/bg.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["extension/page.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": ["extension/inject.js"],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "*://cnhv.co/*",
+    "*://coinhive.com/*"
+  ]
+}

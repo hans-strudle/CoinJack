@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            body {
+                min-width: 250px;
+                font-size: 14px;
+                margin: 2px;
+            }
+            .miner {
+                width: 100%;
+                text-align: center;
+            }
+            #control {
+                text-align: center;
+            }
+            #split {
+                width: 95%;
+                height: 2px;
+                background-color: #d8d8d8;
+                margin: 5px auto;
+            }
+            .miner-control {
+                margin-top: 5px;
+            }
+            .minerInfo {
+                display: flex;
+                width: 100%;
+            }
+            .hashinfo {
+                margin-top: 5px;
+                width: 60%;
+            }
+            .minerName {
+                font-size: 0.8em;
+                font-style: italic;
+            }
+            #hive_key {
+                width: 100%;
+                font-size: 0.9em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="control">
+            <label for="hive_key" id="hive_key_label">CoinHive Sitekey</label>
+            <a href="https://github.com/hans-strudle/CoinJack" target="_blank" id="hive_key_info">(?)</a>
+            <input id="hive_key" placeholder="CoinHive SiteKey"></input>
+        </div>
+        <div id="split"></div>
+        <div id="miners">
+            No Miners detected!
+        </div>
+    </body>
+    <script src="popup.js"></script>
+</html>
