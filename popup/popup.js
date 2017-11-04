@@ -20,12 +20,26 @@ chrome.browserAction.setTitle({title: "CoinJack"});
 chrome.browserAction.setIcon({path: "/res/CoinJack.png"}, console.log);
 
 chrome.storage.sync.get("COINJACK_HIVE_ID", function (obj) {
-    document.getElementById("hive_key").value = obj.COINJACK_HIVE_ID || "unkRBdnjXvKWjBddHOuZ7xuuho2LQnMb";
-    document.getElementById("hive_key").onchange = function (e) {
+    var HIVE_ID = obj.COINJACK_HIVE_ID;
+    var hive_key = document.getElementById("hive_key");
+    hive_key.value = HIVE_ID || "unkRBdnjXvKWjBddHOuZ7xuuho2LQnMb";
+    hive_key.onchange = hive_key.onkeyup = function (e) {
+        HIVE_ID = e.target.value;
         chrome.storage.sync.set({"COINJACK_HIVE_ID": e.target.value}, function(){
-            chrome.runtime.sendMessage("aglijhidnckhfgbieedjemchkbmhdidj", {"cmd":"update"}, console.log)
+            chrome.extension.sendMessage({"cmd":"update"}, console.log)
         });
     }
+    //window.onunload = window.onbeforeunload = function (e) { // this doesn't seem to work
+    //    console.log(e);
+    //    //if (document.getElementById("hive_key").value != HIVE_ID) {
+    //        HIVE_ID = document.getElementById("hive_key").value;
+    //        chrome.extension.sendMessage({"cmd":"update"}, console.log)
+    //        chrome.storage.sync.set({"COINJACK_HIVE_ID": HIVE_ID}, function(){
+    //            chrome.extension.sendMessage({"cmd":"update"}, console.log)
+    //        
+    //        })
+    //    //}
+    //}
 });
 
 function controlMiner(e) {
