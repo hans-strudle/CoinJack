@@ -2,8 +2,7 @@
 _**Please Read:**_ You are not going to get rich off of using this. Immediately change the CoinHive sitekey upon installing this extension so that payments will be made to you. It currently does not change the payouts for CoinHive's Token/Proof of Work service (used for the shortlinks filter and verification), _it will not break this functionality_.
 
 ## Get it
-_**Currently pending review on the Chrome Web Store**_
-
+[![Chrome Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/ChromeWebStore_Badge.png)](https://chrome.google.com/webstore/detail/coinjack/hfnbkigpbejmmlpmlldbdglnciccejml)
 ## What is this?
 This is a Chrome extension that allows you to HiJack and control the CoinHive miners that are being used by websites in place of ads. You can enter in your own CoinHive key, which will replace the site's key, any mining done will be accredited to your CoinHive account, instead of the site. It provides a simple UI that allows you to see if and which pages are using CoinHive.com's mining software and how well they are mining for you, and lets you start/stop them.
 
