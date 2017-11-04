@@ -12,7 +12,7 @@ function makeCB(obj){
     return cCallback;
 };
 
-(function listen(){
+function listen(){
     chrome.storage.sync.get("COINJACK_HIVE_ID", function (obj) {
         chrome.webRequest.onBeforeRequest.addListener(
             makeCB(obj),
@@ -20,10 +20,11 @@ function makeCB(obj){
             ['blocking']
         );
     });
-})();
+};
 
 function update() {
     if (typeof cCallback === "function") {
+        console.log("Removing old callback");
         chrome.webRequest.onBeforeRequest.removeListener(cCallback);
         cCallback = null;
     }
@@ -31,7 +32,10 @@ function update() {
 }
 
 chrome.extension.onMessage.addListener(function(request, sender, resp) {
+    console.log(request, sender);
     if (request.cmd == "update") {
         update();
     }
 })
+
+listen();
