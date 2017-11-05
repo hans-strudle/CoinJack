@@ -3,6 +3,9 @@ _**Please Read:**_ You are not going to get rich off of using this. Immediately 
 
 ## Get it
 [![Chrome Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/ChromeWebStore_Badge.png)](https://chrome.google.com/webstore/detail/coinjack/hfnbkigpbejmmlpmlldbdglnciccejml)
+
+_**Currently working on porting to FireFox and Opera**_
+
 ## What is this?
 This is a Chrome extension that allows you to HiJack and control the miners that are being used by websites in place of ads. At the moment it only supports hijacking the CoinHive web miner. You can enter in your own CoinHive key, which will replace the site's key, and any mining done will be accredited to your CoinHive account, instead of the site you are visiting. It provides a simple UI that allows you to see if and which pages are using the CoinHive mining software and how well they are mining for you, and lets you start/stop them.
 
@@ -25,3 +28,6 @@ At the same time, the extension injects some javascript onto the page that looks
 - [ ] Add support to control other miners
   - [ ] [deepwn/deepMiner](https://github.com/deepwn/deepMiner)
   - [ ] ???
+- [ ] Add support for other browsers
+  - [ ] Opera
+  - [ ] Firefox - can directly edit script response in FF
