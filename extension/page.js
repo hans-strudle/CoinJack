@@ -1,7 +1,9 @@
+window.browser = window.msBrowser || window.browser || window.chrome;
+
 function init(){
     var miners = document.getElementsByClassName("CoinJackMinerObj");
     var observer = new MutationObserver(function(muts) {
-        chrome.extension.sendMessage(muts[0].target.dataset, function(resp) {
+        browser.runtime.sendMessage(muts[0].target.dataset, function(resp) {
             if (resp && (muts[0].target.dataset.running == 'true') != resp.run) {
                 muts[0].target.dataset.running = resp.run;
             }
@@ -13,7 +15,7 @@ function init(){
 };
 
 console.log('CoinHive Jacker extension');
-injectJs(chrome.extension.getURL("/extension/inject.js"))
+injectJs(browser.extension.getURL("/extension/inject.js"))
 setTimeout(init, 1000);
 
 function injectJs (src) {

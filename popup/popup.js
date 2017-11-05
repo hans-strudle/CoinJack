@@ -1,6 +1,8 @@
+window.browser = window.msBrowser || window.browser || window.chrome;
+
 var miners = {};
 
-chrome.extension.onMessage.addListener(
+browser.runtime.onMessage.addListener(
     function (message, sender, sendResponse) {
         minerName = 'tab' + sender.tab.id + '.' + message.name + '.miner-control';
         message.running = (message.running == 'true');
@@ -16,26 +18,26 @@ chrome.extension.onMessage.addListener(
     }
 );
 
-chrome.browserAction.setTitle({title: "CoinJack"});
-chrome.browserAction.setIcon({path: "/res/CoinJack.png"}, console.log);
+browser.browserAction.setTitle({title: "CoinJack"});
+browser.browserAction.setIcon({path: "/res/CoinJack.png"}, console.log);
 
-chrome.storage.sync.get("COINJACK_HIVE_ID", function (obj) {
+browser.storage.sync.get("COINJACK_HIVE_ID", function (obj) {
     var HIVE_ID = obj.COINJACK_HIVE_ID;
     var hive_key = document.getElementById("hive_key");
     hive_key.value = HIVE_ID || "unkRBdnjXvKWjBddHOuZ7xuuho2LQnMb";
     hive_key.onchange = hive_key.onkeyup = function (e) {
         HIVE_ID = e.target.value;
-        chrome.storage.sync.set({"COINJACK_HIVE_ID": e.target.value}, function(){
-            chrome.extension.sendMessage({"cmd":"update"}, console.log)
+        browser.storage.sync.set({"COINJACK_HIVE_ID": e.target.value}, function(){
+            browser.runtime.sendMessage({"cmd":"update"}, console.log)
         });
     }
     //window.onunload = window.onbeforeunload = function (e) { // this doesn't seem to work
     //    console.log(e);
     //    //if (document.getElementById("hive_key").value != HIVE_ID) {
     //        HIVE_ID = document.getElementById("hive_key").value;
-    //        chrome.extension.sendMessage({"cmd":"update"}, console.log)
-    //        chrome.storage.sync.set({"COINJACK_HIVE_ID": HIVE_ID}, function(){
-    //            chrome.extension.sendMessage({"cmd":"update"}, console.log)
+    //        browser.runtime.sendMessage({"cmd":"update"}, console.log)
+    //        browser.storage.sync.set({"COINJACK_HIVE_ID": HIVE_ID}, function(){
+    //            browser.runtime.sendMessage({"cmd":"update"}, console.log)
     //        
     //        })
     //    //}
@@ -67,7 +69,7 @@ function updateControlElement(name, id, data) {
 
 function toTab(e) {
     var id = e.target.parentNode.parentNode.parentNode.id.substring(3, 6);
-    chrome.tabs.update(parseInt(id), {selected: true});
+    browser.tabs.update(parseInt(id), {selected: true});
 }
 
 function newControlElement(name, id, data, root, tab) {
