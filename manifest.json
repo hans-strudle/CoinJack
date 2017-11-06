@@ -5,7 +5,7 @@
   "description": "HiJack browser miners",
   "version": "1.4",
   "short_name": "CoinJack",
-  "homepage_url": "https://github.com/hans-strudel/CoinJack",
+  "homepage_url": "https://github.com/hans-strudle/CoinJack",
 
   "browser_action": {
     "default_icon": "res/CoinJack.png",
