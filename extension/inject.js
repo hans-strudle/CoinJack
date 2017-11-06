@@ -24,14 +24,17 @@ function newMinerElement(miner, name, node) {
     el.dataset.running = miner.isRunning();
     node.appendChild(el);
     miners[miner] = setInterval(function(miner, el) {
-        el.dataset.hashes = miner.getTotalHashes();
-        el.dataset.hashesPerSec = miner.getHashesPerSecond().toFixed(2);
-        console.log(el.dataset, miner)
+        var hashes = miner.getTotalHashes(),
+            hashesPerSec = miner.getHashesPerSecond().toFixed(2),
+            running = miner.isRunning();
+        
+        if (el.dataset.hashes != hashes) el.dataset.hashes = hashes;
+        if (el.dataset.hashesPerSec != hashesPerSec) el.dataset.hashesPerSec = hashesPerSec;
         if (miner.isRunning() && el.dataset.running == "false") {
             miner.stop();
         } else if (!miner.isRunning() && el.dataset.running == "true") {
             miner.start("forceMultiTab");
         }
-        el.dataset.running = miner.isRunning();
+        if (el.dataset.running != running) el.dataset.running = running;
     }.bind(this, miner, el), 100);
 }

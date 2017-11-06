@@ -2,15 +2,16 @@ window.browser = window.msBrowser || window.browser || window.chrome;
 
 function init(){
     var miners = document.getElementsByClassName("CoinJackMinerObj");
-    var observer = new MutationObserver(function(muts) {
-        browser.runtime.sendMessage(muts[0].target.dataset, function(resp) {
+    window.CoinJackObserver = new MutationObserver(function(muts) {
+        var data = Object.assign({}, muts[0].target.dataset); // DOMStringMap needs to be converted to a normal obj for firefox
+        browser.runtime.sendMessage(data, function(resp) {
             if (resp && (muts[0].target.dataset.running == 'true') != resp.run) {
                 muts[0].target.dataset.running = resp.run;
             }
         })
     });
     for (var miner of miners) {
-        observer.observe(miner, {attributes:true})
+        window.CoinJackObserver.observe(miner, {attributes:true})
     }
 };
 

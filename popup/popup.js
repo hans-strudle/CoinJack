@@ -69,7 +69,7 @@ function updateControlElement(name, id, data) {
 
 function toTab(e) {
     var id = e.target.parentNode.parentNode.parentNode.id.substring(3, 6);
-    browser.tabs.update(parseInt(id), {selected: true});
+    browser.tabs.update(parseInt(id), {active: true});
 }
 
 function newControlElement(name, id, data, root, tab) {
