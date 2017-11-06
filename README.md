@@ -4,7 +4,7 @@ _**Please Read:**_ You are not going to get rich off of using this. Immediately 
 ## Get it
 [![Chrome Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/ChromeWebStore_Badge.png)](https://chrome.google.com/webstore/detail/coinjack/hfnbkigpbejmmlpmlldbdglnciccejml)
 
-[![Firefox Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/Firefox.png)](https://addons.mozilla.org/en-US/firefox/addon/coinjack/)
+[![Firefox Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/Firefox_Badge.png)](https://addons.mozilla.org/en-US/firefox/addon/coinjack/)
 
 _**Currently working on porting to Opera**_
 
