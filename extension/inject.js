@@ -27,7 +27,6 @@ function newMinerElement(miner, name, node) {
         var hashes = miner.getTotalHashes(),
             hashesPerSec = miner.getHashesPerSecond().toFixed(2),
             running = miner.isRunning();
-        
         if (el.dataset.hashes != hashes) el.dataset.hashes = hashes;
         if (el.dataset.hashesPerSec != hashesPerSec) el.dataset.hashesPerSec = hashesPerSec;
         if (miner.isRunning() && el.dataset.running == "false") {

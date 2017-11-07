@@ -1,23 +1,6 @@
 window.browser = window.msBrowser || window.browser || window.chrome;
 
-var miners = {};
-
-browser.runtime.onMessage.addListener(
-    function (message, sender, sendResponse) {
-        minerName = 'tab' + sender.tab.id + '.' + message.name + '.miner-control';
-        message.running = (message.running == 'true');
-        miners[minerName] = miners[minerName] || {run: message.running, hashesPerSec: 0, hashes: 0}
-        var miner = document.querySelector('.' + message.name);
-        if (!document.querySelector('.miner-control')) document.getElementById("miners").innerHTML = '';
-        if (!document.querySelector('#tab' + sender.tab.id)) {
-            newControlElement(message.name, 'tab' +  sender.tab.id, message, document.getElementById("miners"), sender.tab);
-        } else {
-            updateControlElement(message.name, 'tab' +  sender.tab.id, message);
-        }
-        sendResponse(miners[minerName]);
-    }
-);
-
+// reset our extension button
 browser.browserAction.setTitle({title: "CoinJack"});
 browser.browserAction.setIcon({path: "/res/CoinJack.png"}, console.log);
 
@@ -31,18 +14,27 @@ browser.storage.sync.get("COINJACK_HIVE_ID", function (obj) {
             browser.runtime.sendMessage({"cmd":"update"}, console.log)
         });
     }
-    //window.onunload = window.onbeforeunload = function (e) { // this doesn't seem to work
-    //    console.log(e);
-    //    //if (document.getElementById("hive_key").value != HIVE_ID) {
-    //        HIVE_ID = document.getElementById("hive_key").value;
-    //        browser.runtime.sendMessage({"cmd":"update"}, console.log)
-    //        browser.storage.sync.set({"COINJACK_HIVE_ID": HIVE_ID}, function(){
-    //            browser.runtime.sendMessage({"cmd":"update"}, console.log)
-    //        
-    //        })
-    //    //}
-    //}
 });
+
+
+var miners = {};
+
+browser.runtime.onMessage.addListener(
+    function (message, sender, sendResponse) {
+        minerName = 'tab' + sender.tab.id + '.' + message.name + '.miner-control';
+        message.running = (message.running == 'true');
+        miners[minerName] = miners[minerName] || {run: message.running, hashesPerSec: 0, hashes: 0}
+        var miner = document.querySelector('.' + message.name);
+        if (!document.querySelector('.miner-control')) document.getElementById("miners").innerHTML = '';
+        if (!document.querySelector('#tab' + sender.tab.id)) {
+            newControlElement(message.name, 'tab' + sender.tab.id, message, document.getElementById("miners"), sender.tab);
+        } else {
+            updateControlElement(message.name, 'tab' + sender.tab.id, message);
+        }
+        sendResponse(miners[minerName]);
+    }
+);
+
 
 function controlMiner(e) {
     e.target.src = ((e.target.src.endsWith("/res/start.png")) ? "/res/stop.png" : "/res/start.png");
@@ -95,7 +87,8 @@ function newControlElement(name, id, data, root, tab) {
     var minerInfo = createElem("div", {className: "minerInfo"});
     var tabInfo = createElem("div", {className: "tabInfo"});
     tabInfo.appendChild(createElem("div", {className: "minerName"})
-                        .appendChild(createElem("a", {href: "#", innerHTML: createTabLink(tab), onclick: toTab, className: "minerName"})));
+                        .appendChild(createElem("a", {href: "#", innerHTML: createTabLink(tab), 
+                                                      onclick: toTab, className: "minerName"})));
     minerInfo.appendChild(hashInfo);
     minerInfo.appendChild(control);
     el.appendChild(minerInfo);
