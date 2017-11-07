@@ -2,9 +2,7 @@
 _**Please Read:**_ You are not going to get rich off of using this. Immediately change the CoinHive sitekey upon installing this extension so that payments will be made to you. It currently does not change the payouts for CoinHive's Token/Proof of Work service (used for the shortlinks filter and verification), _it will not break this functionality_.
 
 ## Get it
-[![Chrome Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/ChromeWebStore_Badge.png)](https://chrome.google.com/webstore/detail/coinjack/hfnbkigpbejmmlpmlldbdglnciccejml)
-
-[![Firefox Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/Firefox_Badge.png)](https://addons.mozilla.org/en-US/firefox/addon/coinjack/)
+[![Chrome Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/ChromeWebStore_Badge.png)](https://chrome.google.com/webstore/detail/coinjack/hfnbkigpbejmmlpmlldbdglnciccejml) [![Firefox Extension](https://raw.githubusercontent.com/hans-strudle/CoinJack/master/res/Firefox_Badge.png)](https://addons.mozilla.org/en-US/firefox/addon/coinjack/)
 
 _**Currently working on porting to Opera**_
 
